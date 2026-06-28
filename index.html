@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Cherry Pepper 🌶️ — Tienda de Bienestar Íntimo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cherry:  #C0392B;
+  --deep:    #1A0A0A;
+  --blush:   #F9E8E8;
+  --pepper:  #8B0000;
+  --gold:    #D4A847;
+  --smoke:   #2D1515;
+  --cream:   #FDF6F0;
+  --muted:   #9B7B7B;
+  --white:   #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  min-height: 100vh;
+}
+
+/* ── AGE GATE ── */
+#age-gate {
+  position: fixed; inset: 0;
+  background: var(--deep);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+.gate-box {
+  text-align: center;
+  max-width: 380px;
+}
+.gate-img { font-size: 52px; margin-bottom: 20px; }
+.gate-box h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.gate-box p { font-size: 14px; color: var(--muted); margin-bottom: 30px; line-height: 1.6; }
+.gate-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.gate-yes {
+  background: var(--cherry);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s;
+}
+.gate-yes:hover { background: var(--pepper); }
+.gate-no {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid #444;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── MAIN (hidden until gate passed) ── */
+#main { display: none; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(26,10,10,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(192,57,43,0.2);
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+}
+.nav-logo span { color: var(--cherry); }
+.nav-wa {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 24px 60px;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(192,57,43,0.18) 0%, transparent 70%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '🌶️';
+  position: absolute;
+  font-size: 300px;
+  opacity: 0.04;
+  top: -40px; left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(192,57,43,0.15);
+  border: 1px solid rgba(192,57,43,0.35);
+  color: var(--cherry);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 7vw, 68px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.hero h1 em { color: var(--cherry); font-style: italic; }
+.hero p {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 420px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cherry);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+.hero-cta:hover { background: var(--pepper); transform: translateY(-2px); }
+
+/* ── SEARCH + FILTERS ── */
+.filter-bar {
+  padding: 32px 24px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.search-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+.search-wrap input {
+  width: 100%;
+  background: var(--smoke);
+  border: 1px solid rgba(192,57,43,0.25);
+  border-radius: 12px;
+  padding: 14px 20px 14px 46px;
+  color: var(--cream);
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-wrap input::placeholder { color: var(--muted); }
+.search-wrap input:focus { border-color: var(--cherry); }
+.search-icon {
+  position: absolute; left: 16px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 16px;
+  pointer-events: none;
+}
+.cat-filters {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.cat-btn {
+  background: var(--smoke);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.cat-btn:hover { border-color: var(--cherry); color: var(--cream); }
+.cat-btn.active {
+  background: var(--cherry);
+  border-color: var(--cherry);
+  color: white;
+}
+
+/* ── SECTION TITLE ── */
+.section-label {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8px 24px 20px;
+}
+.section-label h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: var(--cream);
+}
+.section-label span { color: var(--cherry); }
+#results-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ── PRODUCT GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 0 24px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--smoke);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.2s, border-color 0.2s;
+  display: flex; flex-direction: column;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(192,57,43,0.35); }
+
+.card-img {
+  width: 100%; aspect-ratio: 1/1;
+  object-fit: cover;
+  background: linear-gradient(135deg, #2D1515, #1A0A0A);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 52px;
+  flex-shrink: 0;
+}
+.card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+.card-cat {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cherry);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.card-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 14px;
+}
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px;
+}
+.card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--gold);
+  font-weight: 600;
+}
+.card-wa {
+  background: var(--cherry);
+  color: white;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 5px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.card-wa:hover { background: var(--pepper); }
+
+/* ── EMPTY STATE ── */
+#empty-state {
+  display: none;
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--muted);
+}
+#empty-state .empty-icon { font-size: 48px; margin-bottom: 16px; }
+#empty-state p { font-size: 14px; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--smoke);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 24px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+footer p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.footer-wa {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #25D366;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+footer small { display: block; font-size: 11px; color: #4A3030; margin-top: 16px; }
+
+/* ── MOBILE ── */
+@media (max-width: 480px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 16px 48px; }
+  .card-body { padding: 12px; }
+  .card-price { font-size: 18px; }
+  nav { padding: 12px 16px; }
+  .nav-logo { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div id="age-gate">
+  <div class="gate-box">
+    <div class="gate-img">🌶️</div>
+    <h2>Bienvenida/o</h2>
+    <p>Este sitio contiene productos para adultos. Al ingresar confirmas que tienes 18 años o más.</p>
+    <div class="gate-buttons">
+      <button class="gate-yes" onclick="enterSite()">Soy mayor de 18 años</button>
+      <button class="gate-no" onclick="window.location='https://google.com'">Salir</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Hot Cherry <span>Pepper</span> 🌶️</div>
+    <a class="nav-wa" href="https://wa.me/573241771895?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
+      💬 WhatsApp
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Bienestar íntimo · Envío a domicilio</div>
+    <h1>Tu placer,<br><em>tu elección</em></h1>
+    <p>Explora nuestro catálogo completo. Elige lo que quieras y escríbenos para cotizar y coordinar tu envío.</p>
+    <button class="hero-cta" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Ver catálogo completo ↓</button>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar" id="catalogo">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Buscar producto..." oninput="filterProducts()">
+    </div>
+    <div class="cat-filters" id="cat-filters">
+      <button class="cat-btn active" onclick="setCategory('todos', this)">Todos</button>
+      <button class="cat-btn" onclick="setCategory('juguetes', this)">🔮 Juguetes</button>
+      <button class="cat-btn" onclick="setCategory('lenceria', this)">👙 Lencería</button>
+      <button class="cat-btn" onclick="setCategory('lubricantes', this)">💧 Lubricantes</button>
+      <button class="cat-btn" onclick="setCategory('proteccion', this)">🛡️ Protección</button>
+      <button class="cat-btn" onclick="setCategory('bdsm', this)">🖤 BDSM</button>
+      <button class="cat-btn" onclick="setCategory('pareja', this)">💑 Pareja</button>
+      <button class="cat-btn" onclick="setCategory('bienestar', this)">🌸 Bienestar</button>
+      <button class="cat-btn" onclick="setCategory('cosmeticos', this)">🕯️ Cosméticos</button>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <h2>Catálogo <span>completo</span></h2>
+    <div id="results-count"></div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid" id="product-grid"></div>
+  <div id="empty-state">
+    <div class="empty-icon">🔍</div>
+    <p>No encontramos productos con esa búsqueda.<br>Intenta con otro término o categoría.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Hot Cherry Pepper 🌶️</div>
+    <p>¿Tienes dudas o quieres hacer tu pedido?<br>Escríbenos directamente por WhatsApp.</p>
+    <a class="footer-wa" href="https://wa.me/573241771895?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank">
+      💬 Escribir a WhatsApp
+    </a>
+    <small>© 2026 Hot Cherry Pepper · Todos los derechos reservados · Solo para mayores de 18 años</small>
+  </footer>
+
+</div>
+
+<script>
+const WA = "573241771895";
+const WA_BASE = `https://wa.me/${WA}?text=`;
+
+const products = [
+  // JUGUETES
+  { id:1, name:"Vibrador clásico silicona", cat:"juguetes", img:"🔮", price:"$85.000", desc:"Silicona médica suave, 10 modos de vibración, recargable USB, resistente al agua." },
+  { id:2, name:"Mini bullet estimulador", cat:"juguetes", img:"💜", price:"$45.000", desc:"Compacto y discreto, ideal para viajes. 7 intensidades, batería larga duración." },
+  { id:3, name:"Vibrador punto G curvo", cat:"juguetes", img:"✨", price:"$120.000", desc:"Diseño ergonómico para estimulación precisa. Silicona premium, silencioso." },
+  { id:4, name:"Plug anal suave (kit 3 pzas)", cat:"juguetes", img:"🌸", price:"$75.000", desc:"Set de iniciación en 3 tamaños, silicona soft, base de seguridad." },
+
+  // LENCERÍA
+  { id:5, name:"Body encaje negro", cat:"lenceria", img:"👙", price:"$65.000", desc:"Encaje floral delicado, talla única adaptable, cierre de broches." },
+  { id:6, name:"Set babydoll + tanga", cat:"lenceria", img:"🌹", price:"$55.000", desc:"Tul suave semitransparente, disponible en rojo, negro y nude." },
+  { id:7, name:"Disfraz enfermera sexy", cat:"lenceria", img:"💉", price:"$80.000", desc:"Incluye vestido, gorro y accesorios. Tallas S a XL disponibles." },
+  { id:8, name:"Corsé satin con ligas", cat:"lenceria", img:"🖤", price:"$95.000", desc:"Satén brillante con huesos flexibles, ajuste lateral con cordones." },
+
+  // LUBRICANTES
+  { id:9, name:"Lubricante base agua 100ml", cat:"lubricantes", img:"LUBRICANTES/0.jpg", price:"$28.000", desc:"Compatible con todos los juguetes y condones. Sin sabor, fácil limpieza." },
+  { id:10, name:"Lubricante efecto calor", cat:"lubricantes", img:"🔥", price:"$35.000", desc:"Sensación cálida al contacto, base agua, se activa con el soplo." },
+  { id:11, name:"Aceite de masaje comestible", cat:"lubricantes", img:"🍓", price:"$42.000", desc:"Sabor fresa, aroma suave, ideal para masajes sensuales en pareja." },
+  { id:12, name:"Gel íntimo efecto frío", cat:"lubricantes", img:"❄️", price:"$35.000", desc:"Sensación refrescante prolongada, base agua, sin parabenos." },
+
+  // PROTECCIÓN
+  { id:13, name:"Condones ultra finos (x12)", cat:"proteccion", img:"🛡️", price:"$22.000", desc:"0.045mm de grosor, máxima sensibilidad, lubricados, resistencia probada." },
+  { id:14, name:"Condones con sabores (x6)", cat:"proteccion", img:"🍬", price:"$18.000", desc:"Pack surtido: fresa, vainilla y menta. Látex de calidad premium." },
+  { id:15, name:"Condones retardantes (x3)", cat:"proteccion", img:"⏱️", price:"$20.000", desc:"Con benzocaína al 7.5%, prolongan el placer, sin efecto adormecedor en pareja." },
+  { id:16, name:"Dental dam / barrera oral", cat:"proteccion", img:"💚", price:"$15.000", desc:"Lámina de látex para sexo oral seguro, sabor neutro." },
+
+  // BDSM
+  { id:17, name:"Esposas de terciopelo", cat:"bdsm", img:"🖤", price:"$38.000", desc:"Suaves por dentro, resistentes por fuera. Con llave y cierre de seguridad." },
+  { id:18, name:"Venda para ojos satén", cat:"bdsm", img:"👁️", price:"$22.000", desc:"Satén suave, elástico cómodo, bloqueo total de luz, lavable." },
+  { id:19, name:"Set iniciación BDSM (5 pzas)", cat:"bdsm", img:"🔗", price:"$130.000", desc:"Esposas, venda, pluma, fusta mini y dados eróticos. Presentación regalo." },
+  { id:20, name:"Fusta cuero sintético", cat:"bdsm", img:"🌑", price:"$45.000", desc:"Mango ergonómico, tira de cuero sintético suave, 40cm de largo." },
+
+  // PAREJA
+  { id:21, name:"Anillo vibrador para él", cat:"pareja", img:"💑", price:"$48.000", desc:"Silicona elástica, motor silencioso, estimula a ambos simultáneamente." },
+  { id:22, name:"Dados eróticos (x2)", cat:"pareja", img:"🎲", price:"$18.000", desc:"Un dado de acciones y uno de zonas. Madera, impresión duradera." },
+  { id:23, name:"Juego de cartas íntimas", cat:"pareja", img:"🃏", price:"$35.000", desc:"52 cartas con retos y situaciones para parejas. Desde suave hasta picante." },
+  { id:24, name:"Kit vibradores dobles", cat:"pareja", img:"✨", price:"$155.000", desc:"Diseñado para estimulación simultánea en pareja. Control remoto incluido." },
+
+  // BIENESTAR
+  { id:25, name:"Gel íntimo hidratante", cat:"bienestar", img:"🌸", price:"$32.000", desc:"Fórmula con ácido hialurónico, pH balanceado, uso diario, sin perfume." },
+  { id:26, name:"Jabón íntimo suave", cat:"bienestar", img:"🧴", price:"$25.000", desc:"pH neutro, aloe vera y camomila, dermatológicamente testeado." },
+  { id:27, name:"Crema reafirmante senos", cat:"bienestar", img:"💆", price:"$58.000", desc:"Con colágeno y vitamina E, aplicación en masaje circular, 150ml." },
+  { id:28, name:"Toallitas íntimas x20", cat:"bienestar", img:"🌿", price:"$18.000", desc:"Biodegradables, pH neutro, sin alcohol, aroma suave a lavanda." },
+
+  // COSMÉTICOS
+  { id:29, name:"Vela de masaje vainilla", cat:"cosmeticos", img:"🕯️", price:"$45.000", desc:"Cera de soja, se convierte en aceite tibio para masaje. Aroma vainilla dulce." },
+  { id:30, name:"Set aromaterapia sensual", cat:"cosmeticos", img:"🌹", price:"$75.000", desc:"3 velas + aceite esencial de rosa + difusor. Presentación caja regalo." },
+  { id:31, name:"Perfume con feromonas", cat:"cosmeticos", img:"✨", price:"$65.000", desc:"Fragancia unisex floral-amaderada con feromonas, 30ml, larga duración." },
+  { id:32, name:"Brillo labial efecto volumen", cat:"cosmeticos", img:"💋", price:"$28.000", desc:"Con canela activa, suave hormigueo, sabor cereza. Brillo intenso." },
+];
+
+let currentCat = 'todos';
+
+function enterSite() {
+  document.getElementById('age-gate').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
+  renderProducts(products);
+}
+
+function waLink(productName) {
+  const msg = encodeURIComponent(`Hola! Me interesa el producto: *${productName}*. ¿Me das más información y precio de envío?`);
+  return `${WA_BASE}${msg}`;
+}
+
+function renderProducts(list) {
+  const grid = document.getElementById('product-grid');
+  const empty = document.getElementById('empty-state');
+  const count = document.getElementById('results-count');
+
+  if (list.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    count.textContent = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  count.textContent = `${list.length} producto${list.length !== 1 ? 's' : ''} encontrado${list.length !== 1 ? 's' : ''}`;
+
+  grid.innerHTML = list.map(p => `
+    <div class="card">
+      <div class="card-img">${p.img}</div>
+      <div class="card-body">
+        <div class="card-cat">${catLabel(p.cat)}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-footer">
+          <div class="card-price">${p.price}</div>
+          <a class="card-wa" href="${waLink(p.name)}" target="_blank">💬 Pedir</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function catLabel(cat) {
+  const map = {
+    juguetes: '🔮 Juguetes',
+    lenceria: '👙 Lencería',
+    lubricantes: '💧 Lubricantes',
+    proteccion: '🛡️ Protección',
+    bdsm: '🖤 BDSM',
+    pareja: '💑 Pareja',
+    bienestar: '🌸 Bienestar',
+    cosmeticos: '🕯️ Cosméticos'
+  };
+  return map[cat] || cat;
+}
+
+function setCategory(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterProducts();
+}
+
+function filterProducts() {
+  const search = document.getElementById('search-input').value.toLowerCase();
+  const filtered = products.filter(p => {
+    const matchCat = currentCat === 'todos' || p.cat === currentCat;
+    const matchSearch = !search || p.name.toLowerCase().includes(search) || p.desc.toLowerCase().includes(search);
+    return matchCat && matchSearch;
+  });
+  renderProducts(filtered);
+}
+</script>
+</body>
+</html>

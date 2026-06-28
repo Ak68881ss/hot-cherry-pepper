@@ -526,7 +526,7 @@ function renderProducts(list) {
 
   grid.innerHTML = list.map(p => `
     <div class="card">
-      <div class="card-img">${p.img}</div>
+      <div class="card-img">${p.img ? '<img src="'+p.img+'" style="width:100%;height:100%;object-fit:cover;"/>' : (p.emoji || '🛍️')}</div>
       <div class="card-body">
         <div class="card-cat">${catLabel(p.cat)}</div>
         <div class="card-name">${p.name}</div>

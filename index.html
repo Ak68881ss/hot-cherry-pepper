@@ -42,7 +42,7 @@ body {
   text-align: center;
   max-width: 380px;
 }
-.gate-img { font-size: 52px; margin-bottom: 20px; }
+.gate-emoji { font-size: 52px; margin-bottom: 20px; }
 .gate-box h2 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 32px;
@@ -370,7 +370,7 @@ footer small { display: block; font-size: 11px; color: #4A3030; margin-top: 16px
 <!-- AGE GATE -->
 <div id="age-gate">
   <div class="gate-box">
-    <div class="gate-img">🌶️</div>
+    <div class="gate-emoji">🌶️</div>
     <h2>Bienvenida/o</h2>
     <p>Este sitio contiene productos para adultos. Al ingresar confirmas que tienes 18 años o más.</p>
     <div class="gate-buttons">
@@ -448,52 +448,52 @@ const WA_BASE = `https://wa.me/${WA}?text=`;
 
 const products = [
   // JUGUETES
-  { id:1, name:"Vibrador clásico silicona", cat:"juguetes", img:"🔮", price:"$85.000", desc:"Silicona médica suave, 10 modos de vibración, recargable USB, resistente al agua." },
-  { id:2, name:"Mini bullet estimulador", cat:"juguetes", img:"💜", price:"$45.000", desc:"Compacto y discreto, ideal para viajes. 7 intensidades, batería larga duración." },
-  { id:3, name:"Vibrador punto G curvo", cat:"juguetes", img:"✨", price:"$120.000", desc:"Diseño ergonómico para estimulación precisa. Silicona premium, silencioso." },
-  { id:4, name:"Plug anal suave (kit 3 pzas)", cat:"juguetes", img:"🌸", price:"$75.000", desc:"Set de iniciación en 3 tamaños, silicona soft, base de seguridad." },
+  { id:1, name:"Vibrador clásico silicona", cat:"juguetes", emoji:"🔮", price:"$85.000", desc:"Silicona médica suave, 10 modos de vibración, recargable USB, resistente al agua." },
+  { id:2, name:"Mini bullet estimulador", cat:"juguetes", emoji:"💜", price:"$45.000", desc:"Compacto y discreto, ideal para viajes. 7 intensidades, batería larga duración." },
+  { id:3, name:"Vibrador punto G curvo", cat:"juguetes", emoji:"✨", price:"$120.000", desc:"Diseño ergonómico para estimulación precisa. Silicona premium, silencioso." },
+  { id:4, name:"Plug anal suave (kit 3 pzas)", cat:"juguetes", emoji:"🌸", price:"$75.000", desc:"Set de iniciación en 3 tamaños, silicona soft, base de seguridad." },
 
   // LENCERÍA
-  { id:5, name:"Body encaje negro", cat:"lenceria", img:"👙", price:"$65.000", desc:"Encaje floral delicado, talla única adaptable, cierre de broches." },
-  { id:6, name:"Set babydoll + tanga", cat:"lenceria", img:"🌹", price:"$55.000", desc:"Tul suave semitransparente, disponible en rojo, negro y nude." },
-  { id:7, name:"Disfraz enfermera sexy", cat:"lenceria", img:"💉", price:"$80.000", desc:"Incluye vestido, gorro y accesorios. Tallas S a XL disponibles." },
-  { id:8, name:"Corsé satin con ligas", cat:"lenceria", img:"🖤", price:"$95.000", desc:"Satén brillante con huesos flexibles, ajuste lateral con cordones." },
+  { id:5, name:"Body encaje negro", cat:"lenceria", emoji:"👙", price:"$65.000", desc:"Encaje floral delicado, talla única adaptable, cierre de broches." },
+  { id:6, name:"Set babydoll + tanga", cat:"lenceria", emoji:"🌹", price:"$55.000", desc:"Tul suave semitransparente, disponible en rojo, negro y nude." },
+  { id:7, name:"Disfraz enfermera sexy", cat:"lenceria", emoji:"💉", price:"$80.000", desc:"Incluye vestido, gorro y accesorios. Tallas S a XL disponibles." },
+  { id:8, name:"Corsé satin con ligas", cat:"lenceria", emoji:"🖤", price:"$95.000", desc:"Satén brillante con huesos flexibles, ajuste lateral con cordones." },
 
   // LUBRICANTES
-  { id:9, name:"Lubricante base agua 100ml", cat:"lubricantes", img:"LUBRICANTES/0.jpg", price:"$28.000", desc:"Compatible con todos los juguetes y condones. Sin sabor, fácil limpieza." },
-  { id:10, name:"Lubricante efecto calor", cat:"lubricantes", img:"🔥", price:"$35.000", desc:"Sensación cálida al contacto, base agua, se activa con el soplo." },
-  { id:11, name:"Aceite de masaje comestible", cat:"lubricantes", img:"🍓", price:"$42.000", desc:"Sabor fresa, aroma suave, ideal para masajes sensuales en pareja." },
-  { id:12, name:"Gel íntimo efecto frío", cat:"lubricantes", img:"❄️", price:"$35.000", desc:"Sensación refrescante prolongada, base agua, sin parabenos." },
+  { id:9, name:"Lubricante base agua 100ml", cat:"lubricantes", img:"LUBRICANTES/0.jpg", price:"$28.000", desc:"..." },
+  { id:10, name:"Lubricante efecto calor", cat:"lubricantes", emoji:"🔥", price:"$35.000", desc:"Sensación cálida al contacto, base agua, se activa con el soplo." },
+  { id:11, name:"Aceite de masaje comestible", cat:"lubricantes", emoji:"🍓", price:"$42.000", desc:"Sabor fresa, aroma suave, ideal para masajes sensuales en pareja." },
+  { id:12, name:"Gel íntimo efecto frío", cat:"lubricantes", emoji:"❄️", price:"$35.000", desc:"Sensación refrescante prolongada, base agua, sin parabenos." },
 
   // PROTECCIÓN
-  { id:13, name:"Condones ultra finos (x12)", cat:"proteccion", img:"🛡️", price:"$22.000", desc:"0.045mm de grosor, máxima sensibilidad, lubricados, resistencia probada." },
-  { id:14, name:"Condones con sabores (x6)", cat:"proteccion", img:"🍬", price:"$18.000", desc:"Pack surtido: fresa, vainilla y menta. Látex de calidad premium." },
-  { id:15, name:"Condones retardantes (x3)", cat:"proteccion", img:"⏱️", price:"$20.000", desc:"Con benzocaína al 7.5%, prolongan el placer, sin efecto adormecedor en pareja." },
-  { id:16, name:"Dental dam / barrera oral", cat:"proteccion", img:"💚", price:"$15.000", desc:"Lámina de látex para sexo oral seguro, sabor neutro." },
+  { id:13, name:"Condones ultra finos (x12)", cat:"proteccion", emoji:"🛡️", price:"$22.000", desc:"0.045mm de grosor, máxima sensibilidad, lubricados, resistencia probada." },
+  { id:14, name:"Condones con sabores (x6)", cat:"proteccion", emoji:"🍬", price:"$18.000", desc:"Pack surtido: fresa, vainilla y menta. Látex de calidad premium." },
+  { id:15, name:"Condones retardantes (x3)", cat:"proteccion", emoji:"⏱️", price:"$20.000", desc:"Con benzocaína al 7.5%, prolongan el placer, sin efecto adormecedor en pareja." },
+  { id:16, name:"Dental dam / barrera oral", cat:"proteccion", emoji:"💚", price:"$15.000", desc:"Lámina de látex para sexo oral seguro, sabor neutro." },
 
   // BDSM
-  { id:17, name:"Esposas de terciopelo", cat:"bdsm", img:"🖤", price:"$38.000", desc:"Suaves por dentro, resistentes por fuera. Con llave y cierre de seguridad." },
-  { id:18, name:"Venda para ojos satén", cat:"bdsm", img:"👁️", price:"$22.000", desc:"Satén suave, elástico cómodo, bloqueo total de luz, lavable." },
-  { id:19, name:"Set iniciación BDSM (5 pzas)", cat:"bdsm", img:"🔗", price:"$130.000", desc:"Esposas, venda, pluma, fusta mini y dados eróticos. Presentación regalo." },
-  { id:20, name:"Fusta cuero sintético", cat:"bdsm", img:"🌑", price:"$45.000", desc:"Mango ergonómico, tira de cuero sintético suave, 40cm de largo." },
+  { id:17, name:"Esposas de terciopelo", cat:"bdsm", emoji:"🖤", price:"$38.000", desc:"Suaves por dentro, resistentes por fuera. Con llave y cierre de seguridad." },
+  { id:18, name:"Venda para ojos satén", cat:"bdsm", emoji:"👁️", price:"$22.000", desc:"Satén suave, elástico cómodo, bloqueo total de luz, lavable." },
+  { id:19, name:"Set iniciación BDSM (5 pzas)", cat:"bdsm", emoji:"🔗", price:"$130.000", desc:"Esposas, venda, pluma, fusta mini y dados eróticos. Presentación regalo." },
+  { id:20, name:"Fusta cuero sintético", cat:"bdsm", emoji:"🌑", price:"$45.000", desc:"Mango ergonómico, tira de cuero sintético suave, 40cm de largo." },
 
   // PAREJA
-  { id:21, name:"Anillo vibrador para él", cat:"pareja", img:"💑", price:"$48.000", desc:"Silicona elástica, motor silencioso, estimula a ambos simultáneamente." },
-  { id:22, name:"Dados eróticos (x2)", cat:"pareja", img:"🎲", price:"$18.000", desc:"Un dado de acciones y uno de zonas. Madera, impresión duradera." },
-  { id:23, name:"Juego de cartas íntimas", cat:"pareja", img:"🃏", price:"$35.000", desc:"52 cartas con retos y situaciones para parejas. Desde suave hasta picante." },
-  { id:24, name:"Kit vibradores dobles", cat:"pareja", img:"✨", price:"$155.000", desc:"Diseñado para estimulación simultánea en pareja. Control remoto incluido." },
+  { id:21, name:"Anillo vibrador para él", cat:"pareja", emoji:"💑", price:"$48.000", desc:"Silicona elástica, motor silencioso, estimula a ambos simultáneamente." },
+  { id:22, name:"Dados eróticos (x2)", cat:"pareja", emoji:"🎲", price:"$18.000", desc:"Un dado de acciones y uno de zonas. Madera, impresión duradera." },
+  { id:23, name:"Juego de cartas íntimas", cat:"pareja", emoji:"🃏", price:"$35.000", desc:"52 cartas con retos y situaciones para parejas. Desde suave hasta picante." },
+  { id:24, name:"Kit vibradores dobles", cat:"pareja", emoji:"✨", price:"$155.000", desc:"Diseñado para estimulación simultánea en pareja. Control remoto incluido." },
 
   // BIENESTAR
-  { id:25, name:"Gel íntimo hidratante", cat:"bienestar", img:"🌸", price:"$32.000", desc:"Fórmula con ácido hialurónico, pH balanceado, uso diario, sin perfume." },
-  { id:26, name:"Jabón íntimo suave", cat:"bienestar", img:"🧴", price:"$25.000", desc:"pH neutro, aloe vera y camomila, dermatológicamente testeado." },
-  { id:27, name:"Crema reafirmante senos", cat:"bienestar", img:"💆", price:"$58.000", desc:"Con colágeno y vitamina E, aplicación en masaje circular, 150ml." },
-  { id:28, name:"Toallitas íntimas x20", cat:"bienestar", img:"🌿", price:"$18.000", desc:"Biodegradables, pH neutro, sin alcohol, aroma suave a lavanda." },
+  { id:25, name:"Gel íntimo hidratante", cat:"bienestar", emoji:"🌸", price:"$32.000", desc:"Fórmula con ácido hialurónico, pH balanceado, uso diario, sin perfume." },
+  { id:26, name:"Jabón íntimo suave", cat:"bienestar", emoji:"🧴", price:"$25.000", desc:"pH neutro, aloe vera y camomila, dermatológicamente testeado." },
+  { id:27, name:"Crema reafirmante senos", cat:"bienestar", emoji:"💆", price:"$58.000", desc:"Con colágeno y vitamina E, aplicación en masaje circular, 150ml." },
+  { id:28, name:"Toallitas íntimas x20", cat:"bienestar", emoji:"🌿", price:"$18.000", desc:"Biodegradables, pH neutro, sin alcohol, aroma suave a lavanda." },
 
   // COSMÉTICOS
-  { id:29, name:"Vela de masaje vainilla", cat:"cosmeticos", img:"🕯️", price:"$45.000", desc:"Cera de soja, se convierte en aceite tibio para masaje. Aroma vainilla dulce." },
-  { id:30, name:"Set aromaterapia sensual", cat:"cosmeticos", img:"🌹", price:"$75.000", desc:"3 velas + aceite esencial de rosa + difusor. Presentación caja regalo." },
-  { id:31, name:"Perfume con feromonas", cat:"cosmeticos", img:"✨", price:"$65.000", desc:"Fragancia unisex floral-amaderada con feromonas, 30ml, larga duración." },
-  { id:32, name:"Brillo labial efecto volumen", cat:"cosmeticos", img:"💋", price:"$28.000", desc:"Con canela activa, suave hormigueo, sabor cereza. Brillo intenso." },
+  { id:29, name:"Vela de masaje vainilla", cat:"cosmeticos", emoji:"🕯️", price:"$45.000", desc:"Cera de soja, se convierte en aceite tibio para masaje. Aroma vainilla dulce." },
+  { id:30, name:"Set aromaterapia sensual", cat:"cosmeticos", emoji:"🌹", price:"$75.000", desc:"3 velas + aceite esencial de rosa + difusor. Presentación caja regalo." },
+  { id:31, name:"Perfume con feromonas", cat:"cosmeticos", emoji:"✨", price:"$65.000", desc:"Fragancia unisex floral-amaderada con feromonas, 30ml, larga duración." },
+  { id:32, name:"Brillo labial efecto volumen", cat:"cosmeticos", emoji:"💋", price:"$28.000", desc:"Con canela activa, suave hormigueo, sabor cereza. Brillo intenso." },
 ];
 
 let currentCat = 'todos';
@@ -526,7 +526,12 @@ function renderProducts(list) {
 
   grid.innerHTML = list.map(p => `
     <div class="card">
-      <div class="card-img">${p.img ? '<img src="'+p.img+'" style="width:100%;height:100%;object-fit:cover;"/>' : (p.emoji || '🛍️')}</div>
+      <div class="card-img">
+        ${p.img
+          ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='${p.emoji||'🛍️'}'"/>`
+          : (p.emoji || '🛍️')
+        }
+      </div>
       <div class="card-body">
         <div class="card-cat">${catLabel(p.cat)}</div>
         <div class="card-name">${p.name}</div>
